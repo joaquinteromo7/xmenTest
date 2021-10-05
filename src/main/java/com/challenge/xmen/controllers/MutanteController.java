@@ -18,12 +18,11 @@ public class MutanteController {
 
 	@Autowired
 	MutanteService mutanteService;
-
+ 
 
 	@PostMapping("/mutant")
 	public ResponseEntity<String> determinarMutante(@RequestBody Dna dna){
 
-		mutanteService = new MutanteService();
 		/* Valida Cadena DNA */
 		boolean alerta = mutanteService.validarDna(dna.getDna());
 
