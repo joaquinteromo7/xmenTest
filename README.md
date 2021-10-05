@@ -15,7 +15,7 @@ Mutante: HTTP 200-OK, Humano: 403-Forbidden
 
 ### /mutante
 
-Para hacer uso de la api /mutant se realiza una peticion POST por medio la siguiente uRL
+Para hacer uso de la api /mutant se realiza una petición POST por medio la siguiente uRL
 
 POST → https://challenge-mercadolibre-328121.uc.r.appspot.com/mutant
 
@@ -33,13 +33,13 @@ No es necesario autenticarse la API se puede probar directamente.
 
 ### /stats
 
-La api /stats devuelve un Json con la información correspondiente a la verificacion realizada de ADN:
+La api /stats devuelve un Json con la información correspondiente a la verificación realizada de ADN:
 
-la estructura del Json devuelto es la siguiente : 
+La estructura del Json devuelto es la siguiente : 
 
  {"count_mutant_dna":40, "count_human_dna":100, "ratio":0.4}
  
- donde count_mutant_dna es la cantidad de ADN mutantes detectados, count_human_dna es la cantidad de ADN humanos detectados y ratio es la relación entre la cantidad de ADN mutantes y la cantidad de ADN humnano.
+Donde count_mutant_dna es la cantidad de ADN mutantes detectados, count_human_dna es la cantidad de ADN humanos detectados y ratio es la relación entre la cantidad de ADN mutantes y la cantidad de ADN humnano.
  
 Para hacer uso de la api /stats se realiza una peticion GET por medio la siguiente uRL
 
