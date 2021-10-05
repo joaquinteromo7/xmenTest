@@ -71,6 +71,7 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
@@ -93,6 +94,7 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
@@ -117,6 +119,7 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
@@ -141,6 +144,7 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
@@ -164,6 +168,7 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
@@ -172,7 +177,7 @@ public class MutanteService {
 		/* Contador de cadenas oblicuas der-izq inf */
 		for (int i = 0; i < tamanoString - 4; i++) {
 			contDna = 0;
-			letra = dnaMatriz[i + 1][tamanoString - 1];
+			letra = dnaMatriz[i + 1][tamanoString - 1]; 
 
 			for (int j = 2; j < tamanoString - 1; j++) {
 				if (letra == dnaMatriz[j + i][tamanoString - j]) {
@@ -186,44 +191,34 @@ public class MutanteService {
 					contDna = 0;
 				}
 				if (contSecuencia > 1) {
+					this.guardarRegistro(1, 0, Arrays.toString(dna));
 					return true;
 				}
 			}
 		}
 
-		System.out.println("Cantidad de secuencias:" + String.valueOf(contSecuencia));
+		System.out.println("Cantidad de secuencias:" + String.valueOf(contSecuencia));		
 
-		boolean isMutante = false;
-
-		if (contSecuencia > 1) {
-
-			this.guardarRegistro(1, 0, Arrays.toString(dna));
-			isMutante = true;
-
-		} else {
-
-			this.guardarRegistro(0, 1, Arrays.toString(dna));
-
-		}
-
-		return isMutante;
+		return false;
 	}
 
-	public void guardarRegistro(int countMutantDna, int countHumanDna, String registroDna) {
+	public EstadisticasMutanteModel guardarRegistro(int countMutantDna, int countHumanDna, String registroDna) {
 
 		EstadisticasMutanteModel estadisticasMutanteModel = new EstadisticasMutanteModel();
-		estadisticasMutanteModel.setCountMutantDna(countMutantDna);
-		estadisticasMutanteModel.setCountHumanDna(countHumanDna);
-		estadisticasMutanteModel.setRegistro(registroDna);
-		estadisticasMutanteModel.setId(0);
-
+		
 		try {
-			mutanteRepository.save(estadisticasMutanteModel);
+			estadisticasMutanteModel.setCountMutantDna(countMutantDna);
+			estadisticasMutanteModel.setCountHumanDna(countHumanDna);
+			estadisticasMutanteModel.setRegistro(registroDna);
+			estadisticasMutanteModel.setId(0);
+
+			estadisticasMutanteModel = mutanteRepository.save(estadisticasMutanteModel);
 
 		} catch (Exception e) {
 			System.out.println("Algo salio mal con el guardado de datos...");
 		}
-
+		
+		return estadisticasMutanteModel;
 	}
 
 	public RespuestaStats consultarData() {
@@ -240,7 +235,7 @@ public class MutanteService {
 			ratio = Double.valueOf(contMutante) / Double.valueOf(contHumano);
 
 			respuestaStats.setCountHumanDna(contHumano);
-			respuestaStats.setCountMutantDna(contMutante);
+			respuestaStats.setCountMutantDna(contMutante); 
 			respuestaStats.setRatio(ratio);
 
 		} catch (Exception e) {
