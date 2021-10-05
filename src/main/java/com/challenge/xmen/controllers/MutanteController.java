@@ -14,7 +14,7 @@ import com.challenge.xmen.services.MutanteService;
 
 @RestController
 @RequestMapping()
-public class MutanteController {
+public class MutanteController { 
 
 	@Autowired
 	MutanteService mutanteService;
@@ -23,6 +23,7 @@ public class MutanteController {
 	@PostMapping("/mutant")
 	public ResponseEntity<String> determinarMutante(@RequestBody Dna dna){
 
+		mutanteService = new MutanteService();
 		/* Valida Cadena DNA */
 		boolean alerta = mutanteService.validarDna(dna.getDna());
 
